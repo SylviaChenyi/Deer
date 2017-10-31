@@ -1,2 +1,2 @@
-# deer.Deer
+# Deer
 A Blog System.
