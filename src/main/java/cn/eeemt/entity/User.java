@@ -1,7 +1,12 @@
 package cn.eeemt.entity;
 
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
+
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 /**
  * author: HuangXiquan <br/>
@@ -18,10 +23,16 @@ public class User {
     private Integer id;
     private String username;
     private String password;
+    private String realName;
     private String avatarUrl;
+    private String intro;
+    private LocalDate birthday;
     private LocalDateTime lastLoginTime;
     private LocalDateTime joinTime;
     private LocalDateTime updateTime;
+    @OneToMany(fetch = FetchType.LAZY,mappedBy = "user")
+    @Cascade(CascadeType.SAVE_UPDATE)
+    private List<Article> articles;
 
     public Integer getId() {
         return id;

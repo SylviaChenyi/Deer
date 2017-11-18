@@ -1,6 +1,9 @@
 package cn.eeemt.entity;
 
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * author: HuangXiquan <br/>
@@ -9,7 +12,7 @@ import javax.persistence.*;
  * description:
  */
 @Entity
-@Table(name = "tags")
+@Table(name = "tag")
 public class Tag {
 
     @Id
@@ -18,4 +21,8 @@ public class Tag {
     private Integer id;
     private String name;
     private String description;
+    @ManyToMany
+    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
+    @JoinTable(name = "tag_article",joinColumns = @JoinColumn(name = "tag_id"),inverseJoinColumns = @JoinColumn(name = "article_id"))
+    private List<Article> articles;
 }
