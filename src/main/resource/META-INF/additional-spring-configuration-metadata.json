@@ -1,0 +1,8 @@
+{
+  "properties": [
+    {
+      "name": "deer.test",
+      "type": "java.lang.String",
+      "description": "Description for deer.test."
+  }
+] }

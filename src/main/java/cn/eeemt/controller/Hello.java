@@ -1,8 +1,11 @@
 package cn.eeemt.controller;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.annotation.PostConstruct;
 
 /**
  * author: HuangXiquan <br/>
@@ -12,10 +15,19 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/")
+// @EnableConfigurationProperties(DeerProperties.class)
 public class Hello {
+
+    @Value("${deer.test}")
+    private String aa;
 
     @GetMapping
     public String hello() {
         return "hello";
+    }
+
+    @PostConstruct
+    public void test(){
+        System.out.println(aa);
     }
 }
