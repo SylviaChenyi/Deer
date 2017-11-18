@@ -106,7 +106,7 @@ public class Article {
      ##########################
      ### getter and setter ####
      ##########################
-     */
+    */
 
     public Integer getId() {
         return id;

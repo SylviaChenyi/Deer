@@ -34,6 +34,12 @@ public class User {
     @Cascade(CascadeType.SAVE_UPDATE)
     private List<Article> articles;
 
+    /*
+     ##########################
+     ### getter and setter ####
+     ##########################
+    */
+
     public Integer getId() {
         return id;
     }
@@ -58,12 +64,36 @@ public class User {
         this.password = password;
     }
 
+    public String getRealName() {
+        return realName;
+    }
+
+    public void setRealName(String realName) {
+        this.realName = realName;
+    }
+
     public String getAvatarUrl() {
         return avatarUrl;
     }
 
     public void setAvatarUrl(String avatarUrl) {
         this.avatarUrl = avatarUrl;
+    }
+
+    public String getIntro() {
+        return intro;
+    }
+
+    public void setIntro(String intro) {
+        this.intro = intro;
+    }
+
+    public LocalDate getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(LocalDate birthday) {
+        this.birthday = birthday;
     }
 
     public LocalDateTime getLastLoginTime() {
@@ -88,5 +118,13 @@ public class User {
 
     public void setUpdateTime(LocalDateTime updateTime) {
         this.updateTime = updateTime;
+    }
+
+    public List<Article> getArticles() {
+        return articles;
+    }
+
+    public void setArticles(List<Article> articles) {
+        this.articles = articles;
     }
 }

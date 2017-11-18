@@ -21,7 +21,36 @@ public class Category {
     private String name;
     @ManyToMany
     @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
-    @JoinTable(name = "category_article",joinColumns = @JoinColumn(name = "category_id"),inverseJoinColumns = @JoinColumn(name = "article_id"))
+    @JoinTable(name = "category_article", joinColumns = @JoinColumn(name = "category_id"), inverseJoinColumns = @JoinColumn(name = "article_id"))
     private List<Article> articles;
 
+    /*
+     ##########################
+     ### getter and setter ####
+     ##########################
+    */
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public List<Article> getArticles() {
+        return articles;
+    }
+
+    public void setArticles(List<Article> articles) {
+        this.articles = articles;
+    }
 }
