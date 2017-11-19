@@ -24,7 +24,7 @@ import java.text.SimpleDateFormat;
 @EntityScan(basePackages = "cn.eeemt.entity")
 @EnableTransactionManagement
 @Configuration
-@EnableConfigurationProperties
+@EnableConfigurationProperties(DeerProperties.class)
 public class DeerConfig {
     // @Bean
     // DispatcherServlet dispatcherServlet () {
@@ -40,8 +40,7 @@ public class DeerConfig {
         ObjectMapper objectMapper = new ObjectMapper()
                 .registerModule(new ParameterNamesModule())
                 .registerModule(new Jdk8Module())
-                .registerModule(new JavaTimeModule())
-                ;
+                .registerModule(new JavaTimeModule());
         objectMapper.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false);
         objectMapper.configure(SerializationFeature.WRITE_DATE_TIMESTAMPS_AS_NANOSECONDS, false);
         objectMapper.setDateFormat(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss"));

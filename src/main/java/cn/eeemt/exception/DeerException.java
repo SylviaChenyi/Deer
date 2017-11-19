@@ -10,6 +10,9 @@ import org.apache.commons.lang3.exception.ExceptionUtils;
  * description:
  */
 public class DeerException extends Exception {
+
+    private String message;
+
     public DeerException() {
         super();
     }
@@ -20,15 +23,13 @@ public class DeerException extends Exception {
 
     @Override
     public String getMessage() {
-        return super.getMessage();
+        return this.message;
     }
 
     public DeerException(String format, Object... params) {
-        // DeerException(formatMessage(format,params));
         super(format);
+        this.message = formatMessage(format, params);
     }
-
-
 
     public DeerException(String message, Throwable cause) {
         super(message, cause);

@@ -27,4 +27,27 @@ public class ArticleServiceImpl implements ArticleService {
         PageRequest pageRequest = new PageRequest(page, size, Sort.Direction.DESC, "updateTime");
         return articleRepository.findAll(pageRequest);
     }
+
+    @Override
+    public void saveOrUpdate(Article article) {
+        articleRepository.save(article);
+    }
+
+    @Override
+    public void del(Integer articleId) {
+        Article repositoryOne = articleRepository.findOne(articleId);
+        repositoryOne.setDelFlag(true);
+    }
+
+    @Override
+    public void vote(Integer articleId) {
+        Article repositoryOne = articleRepository.findOne(articleId);
+        repositoryOne.vote();
+    }
+
+    @Override
+    public void unVote(Integer articleId) {
+        Article repositoryOne = articleRepository.findOne(articleId);
+        repositoryOne.unVote();
+    }
 }

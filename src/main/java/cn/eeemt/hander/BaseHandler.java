@@ -26,8 +26,8 @@ public class BaseHandler {
     }
 
     @ExceptionHandler(NoHandlerFoundException.class)
-    public String requestHandlingNoHandlerFound() {
-        return "custom_404";
+    public Result requestHandlingNoHandlerFound() {
+        return new Result<>(HttpStatus.NOT_FOUND, "访问地址不存在", null);
     }
 
     @ExceptionHandler(Throwable.class)

@@ -30,10 +30,13 @@ public class User {
     private LocalDateTime lastLoginTime;
     private LocalDateTime joinTime;
     private LocalDateTime updateTime;
-    @OneToMany(fetch = FetchType.LAZY,mappedBy = "user")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
     @Cascade(CascadeType.SAVE_UPDATE)
     private List<Article> articles;
 
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+    @Cascade(CascadeType.SAVE_UPDATE)
+    private List<Comment> comments;
     /*
      ##########################
      ### getter and setter ####
@@ -126,5 +129,13 @@ public class User {
 
     public void setArticles(List<Article> articles) {
         this.articles = articles;
+    }
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
     }
 }

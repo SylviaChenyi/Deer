@@ -66,8 +66,8 @@ public class Article {
     /**
      * 分类
      */
-    @ManyToMany
-    @Cascade(CascadeType.SAVE_UPDATE)
+    @ManyToMany(fetch = FetchType.LAZY)
+    @Cascade({CascadeType.SAVE_UPDATE})
     @JoinTable(name = "category_article", joinColumns = @JoinColumn(name = "article_id"), inverseJoinColumns = @JoinColumn(name = "category_id"))
     private List<Category> category;
     /**
@@ -80,10 +80,14 @@ public class Article {
     /**
      * 标签
      */
-    @ManyToMany
-    @Cascade(CascadeType.SAVE_UPDATE)
+    @ManyToMany(fetch = FetchType.LAZY)
+    @Cascade({CascadeType.SAVE_UPDATE})
     @JoinTable(name = "tag_article", joinColumns = @JoinColumn(name = "article_id"), inverseJoinColumns = @JoinColumn(name = "tag_id"))
     private List<Tag> tags;
+
+    @OneToMany(mappedBy = "article",fetch = FetchType.LAZY)
+    @Cascade(CascadeType.SAVE_UPDATE)
+    private List<Comment> comments;
     /**
      * 删除标记
      */
@@ -100,6 +104,20 @@ public class Article {
      */
     public int countWords() {
         return 0;
+    }
+
+    /**
+     * 投票/赞同/顶 数
+     */
+    private Integer votes;
+
+
+    public void vote() {
+        votes++;
+    }
+
+    public void unVote() {
+        votes--;
     }
 
     /*
@@ -212,6 +230,14 @@ public class Article {
         this.tags = tags;
     }
 
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
+    }
+
     public boolean isDelFlag() {
         return delFlag;
     }
@@ -226,5 +252,13 @@ public class Article {
 
     public void setDelTime(LocalDateTime delTime) {
         this.delTime = delTime;
+    }
+
+    public Integer getVotes() {
+        return votes;
+    }
+
+    public void setVotes(Integer votes) {
+        this.votes = votes;
     }
 }
