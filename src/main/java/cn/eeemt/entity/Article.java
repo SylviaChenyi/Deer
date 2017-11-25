@@ -102,7 +102,7 @@ public class Article {
      *
      * @return 字数
      */
-    public int countWords() {
+    public int wordCount() {
         return 0;
     }
 
@@ -111,13 +111,28 @@ public class Article {
      */
     private Integer votes;
 
+    /*
+     ############################
+     ### 操作实体本身属性的方法 ####
+     ############################
+    */
 
+    /**
+     * 投票/赞同/顶
+     */
     public void vote() {
         votes++;
     }
 
+    /**
+     * 取消投票/踩/反对
+     */
     public void unVote() {
         votes--;
+    }
+
+    public void countWords() {
+
     }
 
     /*
